@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Exploring  = () => {
 
 const inputRef = useRef(null);
+const [update,setUpdate]= useState(false)
+const inputRefi = useRef(null);
 
 var refCond=false
 var oks = 0
@@ -25,14 +27,16 @@ const handleInputChange = () => {
 };
 
 const handleSub=()=>{
-  
+  setUpdate(el=>!el)
   if(refCond==true){
       inputRef.current.style.backgroundColor = 'yellow';
+      // inputRefi.current.value='false'
       refCond=false
       oks++
     }
     else{
       refCond = true
+      // inputRefi.current.value='true'
       inputRef.current.style.backgroundColor = 'green';
       oks++
     }
